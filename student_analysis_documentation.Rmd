@@ -1,0 +1,71 @@
+---
+title: "Documenting a Synthetic Student Performance R Script"
+author: "Gunel Jafarova | 664430131"
+date: "2026-10-22"
+output: html_document
+---
+
+AI Assistance Declaration: I used ChatGPT (GPT-6, October 22, 2026) for documentation structure, Markdown wording, R Markdown formatting suggestions, and reflection drafting. Prompts used: see Appendix.md. I will verify outputs using GitHub Markdown preview, RStudio/Posit Cloud rendering, independent review of the example script, and a self spot-check. All final calculations are done by myself. I am responsible for the accuracy and originality of this work.
+
+# Purpose
+
+This document explains `student_analysis.R`, a base R script demonstrating a simple, reproducible workflow with six **fictional** student records. It is an educational illustration, not an analysis of actual students.
+
+# Inputs
+
+The script generates its own synthetic data frame. It does not import a CSV or connect to a database.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `student_id` | Character | Fictional record identifier |
+| `study_hours` | Numeric | Illustrative hours studied |
+| `score` | Numeric | Illustrative score from 0 to 100 |
+
+# Script Walkthrough
+
+## Create synthetic records
+
+The code below mirrors the sample data-generation portion of the script.
+
+```{r create-data}
+students <- data.frame(
+  student_id = paste0("S", 1:6),
+  study_hours = c(2, 3, 4, 5, 6, 7),
+  score = c(58, 63, 70, 74, 82, 88)
+)
+print(students)
+```
+
+## Inspect numeric summaries
+
+```{r summarize-data}
+summary(students[c("study_hours", "score")])
+```
+
+## Plot the relationship
+
+```{r plot-data, fig.width=6, fig.height=4}
+plot(students$study_hours, students$score,
+     main = "Synthetic Study Hours and Scores",
+     xlab = "Study hours", ylab = "Score (0–100)",
+     pch = 19)
+```
+
+# Outputs
+
+Running the script displays the synthetic records, a numeric summary, and a scatter plot. Rendering this R Markdown file creates an HTML report with labeled sections, code, and generated output.
+
+# Assumptions and Limitations
+
+The records are invented and intentionally few in number. The plot is descriptive only and does not support a claim of causation or population-level conclusions.
+
+# Verification Checklist
+
+- [ ] Run `student_analysis.R` in R and inspect its printed output.
+- [ ] Knit this document in RStudio or Posit Cloud and inspect headings, table, and plot.
+- [x] Static comparison: example chunks match the source script (AI-assisted review; student must confirm).
+- [x] Static inspection: data are invented in the script; no external input file is used (student must confirm).
+
+# AI Assistance and Responsibility
+
+ChatGPT assisted with section structure, language, and chunk-format suggestions. The student must inspect and validate the generated content and code before submission; see `Appendix.md` for the prompt record.
